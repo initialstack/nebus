@@ -21,6 +21,7 @@ final class BuildingResource extends JsonResource
         $point = $this->resource->location;
 
         $coordinates = null;
+        
         if ($point instanceof Point) {
             $coordinates = [
                 'latitude' => $point->getY(),
@@ -33,8 +34,12 @@ final class BuildingResource extends JsonResource
             'address' => $this->resource->address,
             'coordinates' => $coordinates,
             'datetime' => [
-                'created_at' => $this->resource->created_at->format('Y-m-d H:i:s'),
-                'updated_at' => $this->resource->updated_at->format('Y-m-d H:i:s'),
+                'created_at' => $this->resource->created_at->format(
+                    format: 'Y-m-d H:i:s'
+                ),
+                'updated_at' => $this->resource->updated_at->format(
+                    format: 'Y-m-d H:i:s'
+                ),
             ],
         ];
     }

@@ -13,7 +13,7 @@ final class BuildingSeeder extends Seeder
     public function run(): void
     {
         Building::factory()->count(
-            count: 100
+            count: 50
         )->create();
     }
 }

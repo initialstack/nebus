@@ -34,7 +34,7 @@ final class OrganizationRepository implements OrganizationRepositoryInterface
     public function findById(string $id): ?Organization
     {
         return $this->organization->query()->with(
-            relations: ['phones', 'building']
+            relations: ['phones', 'activities', 'building']
         )->findOrFail(
             id: $id
         );
@@ -53,7 +53,7 @@ final class OrganizationRepository implements OrganizationRepositoryInterface
             operator: '=',
             value: $id
         )->with(
-            relations: ['phones', 'building']
+            relations: ['phones', 'activities', 'building']
         )->paginate(
             perPage: 10
         );

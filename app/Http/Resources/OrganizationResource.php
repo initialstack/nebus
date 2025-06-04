@@ -21,14 +21,21 @@ final class OrganizationResource extends JsonResource
             'id' => $this->resource->id,
             'name' => $this->resource->name,
             'datetime' => [
-                'created_at' => $this->resource->created_at->format('Y-m-d H:i:s'),
-                'updated_at' => $this->resource->updated_at->format('Y-m-d H:i:s'),
+                'created_at' => $this->resource->created_at->format(
+                    format: 'Y-m-d H:i:s'
+                ),
+                'updated_at' => $this->resource->updated_at->format(
+                    format: 'Y-m-d H:i:s'
+                ),
             ],
+            'activities' => ActivityResource::collection(
+                resource: $this->whenLoaded(relationship: 'activities')
+            ),
             'building' => new BuildingResource(
-                resource: $this->whenLoaded('building')
+                resource: $this->whenLoaded(relationship: 'building')
             ),
             'phones' => PhoneResource::collection(
-                resource: $this->whenLoaded('phones')
+                resource: $this->whenLoaded(relationship: 'phones')
             ),
         ];
     }
