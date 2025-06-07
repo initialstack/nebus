@@ -8,7 +8,7 @@ use App\Http\Collections\PaginationCollection;
 use App\Http\Responses\ResourceResponse;
 use Illuminate\Http\Response;
 
-final readonly class BuildingResponder
+final class BuildingResponder
 {
     /**
      * Constructs a new BuildingResponder instance.
